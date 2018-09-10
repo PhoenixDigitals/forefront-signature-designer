@@ -27,10 +27,9 @@
                             </div>
 
                             <div class="row">
-                                <span>
-                                    {{ role }}, Forefront Consulting
-                                </span>
-                                
+                              <span>
+                                <span v-if="role">{{ role }} | </span>FOREFRONT CONSULTING
+                              </span>                           
                             </div> 
 
                             <div class="row">
@@ -38,10 +37,9 @@
                             </div>
 
                             <div class="row">
-                                <span>
-                                    Mobile: {{ mobile }} | Office: {{ office }} | <a :href="website" target="_blank"> {{ website }} </a>
-                                </span>
-                                
+                              <span>
+                                <span v-if="mobile">Mobile: {{ mobile }} | </span>Office: {{ office }} | <a :href="website" target="_blank"> {{ website }} </a>
+                              </span>
                             </div>
                         </td>
                     </tr>
@@ -62,38 +60,38 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex'
 
 export default {
-  name: "ResultForm",
+  name: 'ResultForm',
   computed: mapGetters([
-    "firstname",
-    "lastname",
-    "role",
-    "address",
-    "mobile",
-    "office",
-    "website"
+    'firstname',
+    'lastname',
+    'role',
+    'address',
+    'mobile',
+    'office',
+    'website'
   ]),
   methods: {
     copyToClipboard(data) {
       function listener(e) {
-        e.clipboardData.setData("text/html", data);
-        e.clipboardData.setData("text/plain", data);
-        e.preventDefault();
+        e.clipboardData.setData('text/html', data)
+        e.clipboardData.setData('text/plain', data)
+        e.preventDefault()
       }
 
-      document.addEventListener("copy", listener);
-      document.execCommand("copy");
-      document.removeEventListener("copy", listener);
+      document.addEventListener('copy', listener)
+      document.execCommand('copy')
+      document.removeEventListener('copy', listener)
     },
 
     copyHtmlToClipboard() {
-      var data = document.getElementById("clipboard-data").innerHTML;
-      this.copyToClipboard(data);
+      var data = document.getElementById('clipboard-data').innerHTML
+      this.copyToClipboard(data)
     }
   }
-};
+}
 </script>
 
 <style scoped>
