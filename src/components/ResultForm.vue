@@ -38,7 +38,7 @@
 
                             <div class="row">
                               <span>
-                                <span v-if="mobile">Mobile: {{ mobile }} | </span>Office: {{ office }} | <a :href='https://www.ffcg.se/ target="_blank"> {{ website }} </a>
+                                <span v-if="mobile">Mobile: {{ mobile }} | </span>Office: {{ office }} | <a :href="website_url" target="_blank"> {{ website }} </a>
                               </span>
                             </div>
                         </td>
@@ -71,7 +71,8 @@ export default {
     'address',
     'mobile',
     'office',
-    'website'
+    'website',
+    'website_url'
   ]),
   methods: {
     copyToClipboard(data) {
