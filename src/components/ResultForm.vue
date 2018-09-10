@@ -38,7 +38,7 @@
 
                             <div class="row">
                               <span>
-                                <span v-if="mobile">Mobile: {{ mobile }} | </span>Office: {{ office }} | <a :href="website" target="_blank"> {{ website }} </a>
+                                <span v-if="mobile">Mobile: {{ mobile }} | </span>Office: {{ office }} | <a :href='https://www.ffcg.se/ target="_blank"> {{ website }} </a>
                               </span>
                             </div>
                         </td>
