@@ -60,39 +60,66 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
 
 export default {
-  name: 'ResultForm',
+  name: "ResultForm",
   computed: mapGetters([
-    'firstname',
-    'lastname',
-    'role',
-    'address',
-    'mobile',
-    'office',
-    'website',
-    'website_url'
+    "firstname",
+    "lastname",
+    "role",
+    "address",
+    "mobile",
+    "office",
+    "website",
+    "website_url"
   ]),
   methods: {
+    isSafari() {
+      var ua = window.navigator.userAgent;
+      var iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
+      var webkit = !!ua.match(/WebKit/i);
+      var isSafari = iOS && webkit && !ua.match(/CriOS/i);
+
+      return isSafari;
+    },
+
     copyToClipboard(data) {
       function listener(e) {
-        e.clipboardData.setData('text/html', data)
-        e.clipboardData.setData('text/plain', data)
-        e.preventDefault()
+        e.clipboardData.setData("text/html", data);
+        e.clipboardData.setData("text/plain", data);
+        e.preventDefault();
       }
 
-      document.addEventListener('copy', listener)
-      document.execCommand('copy')
-      document.removeEventListener('copy', listener)
+      document.addEventListener("copy", listener);
+      document.execCommand("copy");
+      document.removeEventListener("copy", listener);
+    },
+
+    selectElementContents(el) {
+      var range = document.createRange();
+      range.selectNodeContents(el);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
     },
 
     copyHtmlToClipboard() {
-      var data = document.getElementById('clipboard-data').innerHTML
-      this.copyToClipboard(data)
+      var dataHtmlElement = document.getElementById("clipboard-data");
+
+      dataHtmlElement.contentEditable = true;
+      dataHtmlElement.readOnly = false;
+
+      this.selectElementContents(dataHtmlElement);
+      this.copyToClipboard(dataHtmlElement.innerHTML);
+
+      dataHtmlElement.contentEditable = false;
+      dataHtmlElement.readOnly = true;
+
+      window.getSelection().removeAllRanges();
     }
   }
-}
+};
 </script>
 
 <style scoped>
