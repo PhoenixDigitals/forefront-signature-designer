@@ -37,7 +37,12 @@
     <div class="form-group">
         <label for="mobile">Mobile</label>
         <input :value="mobile" @input="updateMobile" id="mobile" class="form-control">
-    </div>        
+    </div>
+
+    <div class="form-group">
+        <label for="office">Office</label>
+        <input :value="office" @input="updateOffice" id="office" class="form-control">
+    </div>    
 
   </form>
     
@@ -49,7 +54,14 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "InputForm",
-  computed: mapGetters(["firstname", "lastname", "role", "address", "mobile"]),
+  computed: mapGetters([
+    "firstname",
+    "lastname",
+    "role",
+    "address",
+    "mobile",
+    "office"
+  ]),
   methods: {
     updateFirstname(e) {
       this.$store.commit("updateFirstname", e.target.value);
@@ -65,6 +77,9 @@ export default {
     },
     updateAddress(e) {
       this.$store.commit("updateAddress", e.target.value);
+    },
+    updateOffice(e) {
+      this.$store.commit("updateOffice", e.target.value);
     }
   }
 };

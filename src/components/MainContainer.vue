@@ -2,7 +2,9 @@
   <div class="content">
     
     <div class="row title">
-      <h1>Forefront signature designer</h1>
+      <div class="col-12">
+        <h1>Forefront signature designer</h1>
+      </div>      
     </div>     
 
     <div class="row">
@@ -11,7 +13,7 @@
       </div>
 
       <div class="col-6">
-        <ResultForm />
+        <PreviewForm />
       </div>
     </div>    
   </div>
@@ -19,13 +21,13 @@
 
 <script>
 import InputForm from "./InputForm.vue";
-import ResultForm from "./ResultForm.vue";
+import PreviewForm from "./PreviewForm.vue";
 
 export default {
   name: "MainContainer",
   components: {
     InputForm,
-    ResultForm
+    PreviewForm
   }
 };
 </script>
@@ -37,8 +39,29 @@ export default {
 }
 
 .content {
-  max-width: 1270px;
   margin-left: auto;
   margin-right: auto;
+}
+
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) {
+  .content {
+    max-width: 1200px;
+  }
+}
+
+@media screen and (max-device-width: 800px) {
+  .content {
+    max-width: 500px;
+  }
+}
+
+@media screen and (min-device-width: 1600px) {
+  .content {
+    max-width: 1300px;
+  }
+}
+
+.col-6 {
+  min-width: 400px;
 }
 </style>

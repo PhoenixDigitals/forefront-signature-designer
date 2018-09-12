@@ -1,20 +1,20 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from "vue";
+import Vuex from "vuex";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 // root state object.
 // each Vuex instance is just a single state tree.
 const state = {
-  firstname: 'Elon',
-  lastname: 'Musk',
-  role: 'Konsult',
-  address: 'Stationsgatan 37M, 302 50 Halmstad',
-  mobile: '+46 123 45 67 89',
-  office: '+46 8 410 600 00',
-  website: 'www.ffcg.se',
-  website_url: 'https://www.ffcg.se'
-}
+  firstname: "Elon",
+  lastname: "Musk",
+  role: "Konsult",
+  address: "Stationsgatan 37M, 302 50 Halmstad",
+  mobile: "+46 123 45 67 89",
+  office: "+46 8 410 600 00",
+  website: "www.ffcg.se",
+  website_url: "https://www.ffcg.se"
+};
 
 // mutations are operations that actually mutates the state.
 // each mutation handler gets the entire state tree as the
@@ -23,30 +23,33 @@ const state = {
 // for debugging purposes.
 const mutations = {
   updateFirstname(state, firstname) {
-    state.firstname = firstname
+    state.firstname = firstname;
   },
   updateLastname(state, lastname) {
-    state.lastname = lastname
+    state.lastname = lastname;
   },
   updateRole(state, role) {
-    state.role = role
+    state.role = role;
   },
   updateAddress(state, address) {
-    state.address = address
+    state.address = address;
   },
   updateMobile(state, mobile) {
-    state.mobile = mobile
+    state.mobile = mobile;
+  },
+  updateOffice(state, office) {
+    state.office = office;
   }
-}
+};
 
 // actions are functions that cause side effects and can involve
 // asynchronous operations.
 const actions = {
-  updateFirstname: ({ commit }) => commit('updateFirstname'),
-  updateLastname: ({ commit }) => commit('updateLastname'),
-  updateRole: ({ commit }) => commit('updateRole'),
-  updateAddress: ({ commit }) => commit('updateAddress')
-}
+  updateFirstname: ({ commit }) => commit("updateFirstname"),
+  updateLastname: ({ commit }) => commit("updateLastname"),
+  updateRole: ({ commit }) => commit("updateRole"),
+  updateAddress: ({ commit }) => commit("updateAddress")
+};
 
 // getters are functions
 const getters = {
@@ -66,11 +69,11 @@ const getters = {
       state.address +
       `}}</span>
     </div>
-  `
+  `;
 
-    return html
+    return html;
   }
-}
+};
 
 // A Vuex instance is created by combining the state, mutations, actions,
 // and getters.
@@ -79,4 +82,4 @@ export default new Vuex.Store({
   getters,
   actions,
   mutations
-})
+});

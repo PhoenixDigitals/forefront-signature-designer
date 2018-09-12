@@ -57,6 +57,6 @@ html,
 }
 
 .header {
-  height: 60px;
+  height: 80px;
 }
 </style>
