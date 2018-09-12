@@ -34,7 +34,8 @@
                     <div class="row">
                         <span>
                             <span v-if="mobile">Mobile: {{ mobile }}</span>
-                            <span v-if="office"> | Office: {{ office }} </span>
+                            <span v-if="mobile && office"> | </span>
+                            <span v-if="office"> Office: {{ office }} </span>
                         </span>
                     </div>
                 </td>
